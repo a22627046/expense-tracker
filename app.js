@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const moment = require('moment')
 const Record = require('./models/record')
 const mongoose = require('mongoose')
 
@@ -18,7 +19,15 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    simplifyTime: function (time) {
+      const newTime = moment(time).format('YYYY/MM/DD')
+      return newTime
+    }
+  }
+}))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
@@ -30,7 +39,6 @@ app.get('/', (req, res) => {
     })
     return total
   }
-
   Record.find()
     .lean()
     .sort({ date: 'desc' })
@@ -40,6 +48,8 @@ app.get('/', (req, res) => {
     })
     .catch(error => console.error(error))
 })
+
+
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
