@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const Record = require('./models/record')
 const mongoose = require('mongoose')
 
 const app = express()
@@ -22,7 +23,22 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.render('index')
+  const sum = (records) => {
+    let total = 0
+    records.map(record => {
+      total += record.amount
+    })
+    return total
+  }
+
+  Record.find()
+    .lean()
+    .sort({ date: 'desc' })
+    .then(records => {
+      const totalAmount = sum(records)
+      res.render('index', { records, totalAmount })
+    })
+    .catch(error => console.error(error))
 })
 
 app.listen(3000, () => {

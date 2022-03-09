@@ -1,1 +1,19 @@
-<h1>hello world!</h1>
+<div class="d-flex justify-content-center mt-4">
+  <h3 class="mb-2 p-2"><b>總金額:</b></h3>
+  <h1 class="mt-2 mr-4"><b>${{totalAmount}}</b></h1>
+</div>
+
+<div class="container mt-4 col-8">
+  {{#each records}}
+  <div class="list-group">
+    <div class="list-group-item d-flex bg-light">
+      <i class="{{this.category}} fa-3x"></i>
+      <div class="p-2">
+        <h4>{{this.name}}</h4>
+        <h4>{{this.date}}</h4>
+      </div>
+      <h4>${{this.amount}}</h4>
+    </div>
+  </div>
+  {{/each}}
+</div>
