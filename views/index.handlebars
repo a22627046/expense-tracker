@@ -3,12 +3,12 @@
   <h1 class="mt-2 mr-4"><b>${{totalAmount}}</b></h1>
 </div>
 
-<div class="container mt-4 col-8">
+<div class="container mt-2 col-4">
   {{#each records}}
   <div class="list-group">
     <div class="list-group-item d-flex bg-light">
       <i class="{{this.category}} fa-3x"></i>
-      <div class="p-2">
+      <div class="sm-5">
         <h4>{{this.name}}</h4>
         <h4>{{simplifyTime this.date}}</h4>
       </div>
@@ -16,4 +16,5 @@
     </div>
   </div>
   {{/each}}
+  <a class="btn btn-dark btn-block mt-4" href="/records/new">新增支出</a>
 </div>

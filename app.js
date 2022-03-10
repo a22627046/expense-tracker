@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 const moment = require('moment')
 const Record = require('./models/record')
 const mongoose = require('mongoose')
@@ -30,6 +31,7 @@ app.engine('handlebars', exphbs({
 }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   const sum = (records) => {
@@ -49,7 +51,16 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+app.get('/records/new', (req, res) => {
+  res.render('new')
+})
 
+app.post('/records', (req, res) => {
+  const { name, date, category, amount } = req.body
+  return Record.create({ name, date, category, amount })
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
+})
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
