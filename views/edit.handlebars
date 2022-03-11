@@ -1,0 +1,43 @@
+<div class="col-auto">
+  <form action="/records/{{record._id}}?_method=PUT" method="POST">
+    <div class="container col-4">
+      <div class="form-group text-center mt-5">
+        <h2><b>請修改支出</b></h2>
+      </div>
+      <small for="title" style="color: red;">*必填欄位</small>
+      <div class="form-group mt-4">
+        <label for="name">名稱
+          <span style="color: red;">*</span>
+          :</label>
+        <input type="text" class="form-control" name="name" id="name" value="{{record.name}}" required>
+      </div>
+      <div class="form-group">
+        <label for="date">日期
+          <span style="color: red;">*</span>
+          :</label>
+        <input class="form-control" type="date" name="date" id="date" value="{{simplifyTime record.date}}" required>
+      </div>
+      <div class="form-group">
+        <label for="category">類別
+          <span style="color: red;">*</span>
+          :</label>
+        <select class="form-control" name="category" id="category" value="{{record.category}}" required>
+          <option value="" selected disabled hidden>請選擇</option>
+          <option {{#if (eq record.category "fas fa-home" )}}selected{{/if}} value="fas fa-home">家居物業</option>
+          <option {{#if (eq record.category "fas fa-shuttle-van" )}}selected{{/if}} value="fas fa-shuttle-van">交通出行
+          </option>
+          <option {{#if (eq record.category "fas fa-grin-beam" )}}selected{{/if}} value="fas fa-grin-beam">休閒娛樂</option>
+          <option {{#if (eq record.category "fas fa-utensils" )}}selected{{/if}} value="fas fa-utensils">餐飲食品</option>
+          <option {{#if (eq record.category "fas fa-pen" )}}selected{{/if}} value="fas fa-pen">其他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="amount">金額
+          <span style="color: red;">*</span>
+          :</label>
+        <input type="number" class="form-control" name="amount" id="amount" min="1" value="{{record.amount}}" required>
+      </div>
+      <button type="submit" class="btn btn-dark btn-block mt-4">送出</button>
+    </div>
+  </form>
+</div>
