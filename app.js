@@ -90,6 +90,14 @@ app.put('/records/:id', (req, res) => {
     .catch(error => console.error(error))
 })
 
+app.delete('/records/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
+})
+
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
 })

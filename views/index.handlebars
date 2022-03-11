@@ -7,15 +7,24 @@
   {{#each records}}
   <div class="list-group">
     <div class="list-group-item d-flex bg-light">
-      <i class="{{this.category}} fa-3x"></i>
+      <div class="pt-2 mr-4">
+        <i class="{{this.category}} fa-3x"></i>
+      </div>
       <div class="sm-5">
         <h4>{{this.name}}</h4>
         <h4>{{simplifyTime this.date}}</h4>
       </div>
-      <h4>${{this.amount}}</h4>
-      <a class="btn btn-light" href="./records/{{ this._id }}/edit">
-        <i class="fas fa-edit fa-2x"></i>
-      </a>
+      <div class="p-2 flex-fill align-items-center text-right">
+        <h4 class="pt-3">${{this.amount}}</h4>
+      </div>
+      <div class="d-flex align-items-end mb-2">
+        <a class="btn btn-light" href="./records/{{ this._id }}/edit">
+          <i class="fas fa-edit fa-2x"></i>
+        </a>
+        <form action="/records/{{this._id}}?_method=DELETE" method="POST">
+          <button class="btn btn-light" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
+        </form>
+      </div>
     </div>
   </div>
   {{/each}}
