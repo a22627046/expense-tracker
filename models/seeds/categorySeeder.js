@@ -1,13 +1,6 @@
-const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const Category = require('../category')
 const categoryList = require('./seedsData/category.json')
-mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 
 db.once('open', () => {
   console.log('CategorySeeder is running!')
