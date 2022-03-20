@@ -15,8 +15,14 @@
     <nav class="navbar navbar-dark bg-dark mb-2">
       <a class="navbar-brand" href="/">
         <i class="fas fa-book"></i>
-        我的記帳小本本
+        {{#if isAuthenticated}}{{user.name}}{{else}}我{{/if}}
+        的記帳小本本
       </a>
+      {{#if isAuthenticated}}
+      <a class="btn btn-outline-light" href="/users/logout">Logout</a>
+      {{else}}
+      <a class="btn btn-outline-light" href="/users/login">Login</a>
+      {{/if}}
     </nav>
   </header>
   {{{body}}}
