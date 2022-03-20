@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
     })
     return total
   }
-  Record.find()
+  const userId = req.user._id
+
+  Record.find({ userId })
     .lean()
     .sort({ date: 'desc' })
     .then(records => {
