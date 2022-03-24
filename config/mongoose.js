@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const MONGODB_URI = process.env.MONGODB_URI
 //設定連線到 mongoDB
-mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 //取得連線狀態
 const db = mongoose.connection
 //連線異常
