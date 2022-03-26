@@ -2,6 +2,14 @@
 
 #### 此專案使用Express與MongoDB打造的記帳應用程式。
 
+
+
+:point_right:[點我體驗!](https://peaceful-reef-01916.herokuapp.com/)
+
+> Demo Account
+> Email: root@example.com
+> Password: 12345678
+
 ### 登入畫面
 ![登入](https://user-images.githubusercontent.com/82774991/160234752-25eb7d2d-742c-46ba-8e9c-ca0b9e1a5a03.PNG)
 
@@ -31,3 +39,34 @@
 * Node.js: 10.15.0 
 * Express: 4.17.1
 * MongoDB: 4.2.17
+* Robo 3T: 1.4.3
+
+## 安裝與執行步驟 (installation and execution)
+1.開啟終端機並輸入以下指令
+```
+git clone https://github.com/a22627046/expense-tracker.git
+```
+2.安裝專案工具
+```
+cd expense-tracker  //切換該專案資料夾
+```
+```
+npm install  //安裝相關套件
+```
+3.啟動本地 MongoDB 資料庫
+
+4.於Robo 3T中建立"expense-tracker"資料庫
+
+5.利用.env.example建立.env檔案並將對應的ID與SECRET填入
+
+6.於終端機輸入以下指令
+```
+npm run seed
+npm run start
+```
+7.若看到下列訊息，表示執行成功
+```
+App is running on http://localhost:3000
+mongodb connected!
+```
+點選 http://localhost:3000 瀏覽專案功能
