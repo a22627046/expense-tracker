@@ -2,14 +2,6 @@
 
 #### 此專案使用 Express 與 MongoDB 打造的記帳應用程式。
 
-:point_right:[點我體驗!](https://web-production-a85a.up.railway.app/)
-
-> Demo Account
-
-> Email: root@example.com
-
-> Password: 12345678
-
 ### 登入畫面
 
 ![登入](https://user-images.githubusercontent.com/82774991/160234752-25eb7d2d-742c-46ba-8e9c-ca0b9e1a5a03.PNG)
